@@ -22,13 +22,38 @@
       val = effectivity[type];
       pkm.effectivity[val].push(type);
     }
+    if (pkm["gender ratio"] == null) {
+      pkm["gender ratio"] = {
+        "m": 0.5,
+        "f": 0.5
+      };
+    }
+    if (pkm["gender ratio"] !== "n") {
+      res$ = {};
+      for (type in ref1$ = pkm["gender ratio"]) {
+        val = ref1$[type];
+        res$[type] = val * 100;
+      }
+      pkm["gender ratio"] = res$;
+    }
   }
   porygon = angular.module('porygon', [], function($interpolateProvider){
     $interpolateProvider.startSymbol('[[');
     return $interpolateProvider.endSymbol(']]');
   });
   porygon.controller('Pkmn', function($scope){
-    return $scope.pkmn = pokedex_dictionary;
+    $scope.pkmn = pokedex_dictionary;
+    return $scope.bar = function(width, color1, color2){
+      var pref;
+      return (function(){
+        var i$, ref$, len$, results$ = [];
+        for (i$ = 0, len$ = (ref$ = ["-webkit-", "-o-", "-moz-", ""]).length; i$ < len$; ++i$) {
+          pref = ref$[i$];
+          results$.push("background: " + pref + "linear-gradient(left, " + color1 + " 0%, " + color1 + " " + width + "%, " + color2 + " " + width + "%, " + color2 + " 100%)");
+        }
+        return results$;
+      }()).join(";");
+    };
   });
   angular.bootstrap(document, ['porygon']);
 }).call(this);

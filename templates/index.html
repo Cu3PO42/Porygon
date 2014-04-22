@@ -82,39 +82,44 @@
                             <tr>
                                 <td>HP: </td>
                                 <td style="width:20">[[pkm["base stats"].hp]]</td>
-                                <td class="statbar-td"></td>
+                                <td class="statbar-td"><div class="progress bar statbar" style="[[bar(pkm['base stats'].hp / 2, '#ff5050', 'rgba(0, 0, 0, 0)')]]"></div></td>
                             </tr>
                             <tr>
                                 <td>Attack: </td>
                                 <td style="width:20">[[pkm["base stats"].atk]]</td>
-                                <td class="statbar-td"></td>
+                                <td class="statbar-td"><div class="progress bar statbar" style="[[bar(pkm['base stats'].atk / 2, '#f93', 'rgba(0, 0, 0, 0)')]]"></div></td>
                             </tr>
                             <tr>
                                 <td>Defense: </td>
                                 <td style="width:20">[[pkm["base stats"].def]]</td>
-                                <td class="statbar-td"></td>
+                                <td class="statbar-td"><div class="progress bar statbar" style="[[bar(pkm['base stats'].def / 2, '#ffff94', 'rgba(0, 0, 0, 0)')]]"></div></td>
                             </tr>
                             <tr>
                                 <td>Sp. Atk: </td>
                                 <td style="width:20">[[pkm["base stats"].spa]]</td>
-                                <td class="statbar-td"></td>
+                                <td class="statbar-td"><div class="progress bar statbar" style="[[bar(pkm['base stats'].spa / 2, '#09f', 'rgba(0, 0, 0, 0)')]]"></div></td>
                             </tr>
                             <tr>
                                 <td>Sp. Def: </td>
                                 <td style="width:20">[[pkm["base stats"].spd]]</td>
-                                <td class="statbar-td"></td>
+                                <td class="statbar-td"><div class="progress bar statbar" style="[[bar(pkm['base stats'].spd / 2, '#03c', 'rgba(0, 0, 0, 0)')]]"></div></td>
                             </tr>
                             <tr>
                                 <td>Speed: </td>
                                 <td style="width:20">[[pkm["base stats"].spe]]</td>
-                                <td class="statbar-td"></td>
+                                <td class="statbar-td"><div class="progress bar statbar" style="[[bar(pkm['base stats'].spe / 2, '#0c0', 'rgba(0, 0, 0, 0)')]]"></div></td>
                             </tr>
                         </table>
                         <div class="gender-container">
                             <h4>Gender</h4>
-                            [[pkm["gender ratio"].m]]
-                            <div class="progress bar genderbar"></div>
-                            [[pkm["gender ratio"].f]]
+                            <div data-ng-hide="pkm['gender ratio'] === 'n'">
+                                [[pkm["gender ratio"].m]]%
+                                <div class="progress bar genderbar" style="[[bar(pkm['gender ratio'].m, '#39f', '#f9c')]]"></div>
+                                [[pkm["gender ratio"].f]]%
+                            </div>
+                            <div data-ng-show="pkm['gender ratio'] === 'n'">
+                                <div class="progress bar genderbar genderless"></div>
+                            </div>
                         </div>
                     </li>
                 </ul>

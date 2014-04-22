@@ -15,4 +15,5 @@ porygon.controller 'Pkmn', ($scope) ->
         (for pref in ["-webkit-" "-o-" "-moz-" ""]
             "background: #{pref}linear-gradient(left, #{color1} 0%, #{color1} #{width}%, #{color2} #{width}%, #{color2} 100%)"
         ).join(";")
+    $scope.gender = $scope.base = true
 angular.bootstrap(document, ['porygon'])

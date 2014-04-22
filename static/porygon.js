@@ -43,7 +43,7 @@
   });
   porygon.controller('Pkmn', function($scope){
     $scope.pkmn = pokedex_dictionary;
-    return $scope.bar = function(width, color1, color2){
+    $scope.bar = function(width, color1, color2){
       var pref;
       return (function(){
         var i$, ref$, len$, results$ = [];
@@ -54,6 +54,7 @@
         return results$;
       }()).join(";");
     };
+    return $scope.gender = $scope.base = true;
   });
   angular.bootstrap(document, ['porygon']);
 }).call(this);
